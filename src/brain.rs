@@ -34,6 +34,21 @@ impl Tensor {
         Tensor { data, rows, cols }
     }
 
+    // Flip the matrix rows and columns (Required for Attention)
+    pub fn transpose(&self) -> Tensor {
+        let mut transposed_data = vec![0.0; self.rows * self.cols];
+        for i in 0..self.rows {
+            for j in 0..self.cols {
+                transposed_data[j * self.rows + i] = self.data[i * self.cols + j];
+            }
+        }
+        Tensor {
+            data: transposed_data,
+            rows: self.cols,
+            cols: self.rows,
+        }
+    }
+
     // The core of AI: Matrix Multiplication
     // This is the exact operation that happens inside Transformers
     pub fn matmul(&self, other: &Tensor) -> Result<Tensor, &str> {

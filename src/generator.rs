@@ -1,7 +1,6 @@
 // ============================================================
 // FORGE GENERATOR v1.0 - THE MIND
 // Takes tokens, processes them through the Brain, and predicts the next token.
-// (Currently uses random weights, but the architecture is real).
 // ============================================================
 
 use crate::brain::Tensor;
@@ -13,9 +12,8 @@ pub struct Generator {
 }
 
 impl Generator {
+    // Create a new Generator with random weights (Untrained/Gibberish mode)
     pub fn new(tokenizer: &Tokenizer) -> Self {
-        // In a real AI, these weights are trained on billions of words.
-        // For now, we initialize them randomly to prove the architecture works.
         let vocab_size = tokenizer.vocab_size();
         let mut rng = rand::thread_rng();
         
@@ -26,6 +24,11 @@ impl Generator {
 
         let weights = Tensor::from_flat_data(random_data, vocab_size, vocab_size);
 
+        Generator { weights }
+    }
+
+    // Create a Generator with pre-trained weights (Evolved mode)
+    pub fn from_weights(weights: Tensor) -> Self {
         Generator { weights }
     }
 
