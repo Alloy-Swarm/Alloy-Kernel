@@ -1,4 +1,6 @@
-# ⚙️ Alloy Kernel | The Forge
+[![Join the Swarm on Discord](https://img.shields.io/badge/Discord-Join%20the%20Swarm-5865F2?logo=discord)](https://discord.gg/ayzD256Vhr)
+
+# ⚙️ Alloy AI
 
 > *The gods of Silicon Valley have built a cage, and they call it progress.*
 
